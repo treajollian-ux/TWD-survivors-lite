@@ -1,40 +1,136 @@
 html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>TWD Survivors Lite</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('https://i.ibb.co/XYT9t0S/castle-bg.jpg');
-      background-size: cover;
-      height: 100vh;
-      font-family: sans-serif;
-    }
-    .buttons {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.6);
-      color: white;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>لعبتي - العرضية</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    overflow-x: hidden;
+  }
+  #game {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(90deg, #2c3e50, #4ca1af);
+  }
+  #sidebar {
+    width: 80px;
+    background: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+  }
+  #sidebar button {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 28px;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  #sidebar button:hover {
+    color: #f39c12;
+  }
+  #main-screen {
+    flex: 1;
+    padding: 15px;
+    position: relative;
+  }
+  #header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  #header div {
+    background: #333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  #game-map {background: #556b2f;
+    border-radius: 12px;
+    height: 300px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  #gift-box {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: #ff5722;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #gift-box:hover {
+    background: #e64a19;
+  }
+  #characters-bar {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    background: #222;
+    padding: 10px 0;
+    border-radius: 8px;
+  }
+  .character {
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .character:hover {
+    transform: scale(1.2);
+  }
+</style>
 </head>
 <body>
-  <div class="buttons">
-    <button>الشخصيات</button>
-    <button>الترقيات</button>
-    <button>الإعدادات</button>
+  <div id="game">
+    <div id="sidebar" role="navigation" aria-label="قائمة التحكم">
+      <button id="castle" title="القلعة">🏰</button>
+      <button id="wall" title="الجدار">🧱</button>
+      <button id="shop" title="المتجر">🛒</button>
+      <button id="tasks" title="المهام">📋</button>
+      <button id="settings" title="الإعدادات">⚙️</button>
+    </div>
+    <main id="main-screen" role="main" aria-live="polite">
+      <div id="header">
+        <div id="username">الاسم: الناجي</div>
+        <div id="level">المستوى: 1</div>
+        <div id="daily-gift" tabindex="0" role="button" aria-pressed="false" aria-label="هدية يومية" title="احصل على هديتك اليومية">🎁</div>
+      </div>
+      <section id="game-map" aria-label="خريطة القلعة">
+        <!-- خريطة القلعة هنا -->
+      </section>
+      <section id="characters-bar" aria-label="شخصيات اللعبة">
+        <div class="character" title="المقاتل" role="button" tabindex="0">🗡️</div>
+        <div class="character" title="الرامي" role="button" tabindex="0">🏹</div>
+        <div class="character" title="الصياد" role="button" tabindex="0">🎣</div>
+        <div class="character" title="المزارع" role="button" tabindex="0">🌾</div>
+      </section>
+    </main>
   </div>
+
+<script>
+  document.getElementById('daily-gift').addEventListener('click', () => {
+    alert('لقد استلمت هديتك اليومية: 10 ياقوت!');
+  });
+  
+  const characters = document.querySelectorAll('.character');
+  characters.forEach(char => {
+    char.addEventListener('click', () => {
+      alert(`لقد اخترت الشخصية: ${char.title}`);
+    });
+  });
+</script>
+
 </body>
 </html>
