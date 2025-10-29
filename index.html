@@ -7,18 +7,34 @@ html
   <style>
     body {
       margin: 0;
-      background: black;
-      color: white;
+      padding: 0;
+      background-image: url('https://i.ibb.co/XYT9t0S/castle-bg.jpg');
+      background-size: cover;
+      height: 100vh;
       font-family: sans-serif;
-      text-align: center;
     }
-    h1 {
-      padding-top: 20px;
+    .buttons {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.6);
+      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>🔥 TWD Survivors Lite 🔥</h1>
-  <p>اللعبة قيد التطوير...</p>
+  <div class="buttons">
+    <button>الشخصيات</button>
+    <button>الترقيات</button>
+    <button>الإعدادات</button>
+  </div>
 </body>
 </html>
